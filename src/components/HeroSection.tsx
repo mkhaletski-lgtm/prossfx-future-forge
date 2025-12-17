@@ -3,6 +3,7 @@ import { Scene3D } from './Scene3D';
 import { ShatterText, FloatingContainer } from './ShatterText';
 import { Button } from './ui/button';
 import { Mail } from 'lucide-react';
+import tradingChartBg from '@/assets/trading-chart-bg.jpg';
 
 interface HeroSectionProps {
   onOpenEmailForm: () => void;
@@ -11,15 +12,26 @@ interface HeroSectionProps {
 export function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Trading Chart Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url(${tradingChartBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      
       {/* 3D Background */}
-      <Scene3D className="absolute inset-0 z-0" />
+      <Scene3D className="absolute inset-0 z-[1]" />
       
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background z-10" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,191,166,0.1)_0%,_transparent_70%)] z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background z-[2]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,191,166,0.15)_0%,_transparent_70%)] z-[2]" />
       
       {/* Content */}
-      <div className="container relative z-20 text-center px-4">
+      <div className="container relative z-[10] text-center px-4">
         <FloatingContainer>
           <ShatterText
             text="PROSSFX: Ваш путь к успешной торговле на Форекс"
@@ -42,17 +54,17 @@ export function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2.3, duration: 0.6 }}
-          className="glass rounded-2xl p-8 max-w-2xl mx-auto mb-10"
+          className="bg-white rounded-2xl p-8 max-w-2xl mx-auto mb-10 shadow-xl"
         >
           <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16">
             <div className="text-center">
               <span className="block text-4xl md:text-5xl font-display font-bold gradient-text">92.86%</span>
-              <span className="text-muted-foreground">успешных сделок</span>
+              <span className="text-gray-600">успешных сделок</span>
             </div>
-            <div className="hidden sm:block w-px h-16 bg-border" />
+            <div className="hidden sm:block w-px h-16 bg-gray-300" />
             <div className="text-center">
               <span className="block text-4xl md:text-5xl font-display font-bold text-destructive">19+</span>
-              <span className="text-muted-foreground">лет опыта</span>
+              <span className="text-gray-600">лет опыта</span>
             </div>
           </div>
         </motion.div>
@@ -91,7 +103,7 @@ export function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[10]"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
