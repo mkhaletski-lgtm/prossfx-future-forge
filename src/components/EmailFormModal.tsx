@@ -25,14 +25,34 @@ export function EmailFormModal({ isOpen, onClose }: EmailFormModalProps) {
 
     setIsLoading(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsLoading(false);
-    toast.success('Заявка отправлена! Советник будет отправлен на ваш email.');
-    setName('');
-    setEmail('');
-    onClose();
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/prossfx@prossfx.ru', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          _subject: 'Запрос на получение советника PROSSFX',
+          _template: 'table'
+        })
+      });
+
+      if (response.ok) {
+        toast.success('Заявка отправлена! Советник будет отправлен на ваш email.');
+        setName('');
+        setEmail('');
+        onClose();
+      } else {
+        throw new Error('Ошибка отправки');
+      }
+    } catch (error) {
+      toast.error('Произошла ошибка. Попробуйте позже.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -48,15 +68,15 @@ export function EmailFormModal({ isOpen, onClose }: EmailFormModalProps) {
             className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
           />
           
-          {/* Modal */}
+          {/* Modal - centered */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
-            <div className="glass-strong rounded-3xl p-8 mx-4 relative overflow-hidden">
+            <div className="glass-strong rounded-3xl p-8 w-full max-w-md relative overflow-hidden">
               {/* Glow effects */}
               <div className="absolute top-0 left-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl" />
               <div className="absolute bottom-0 right-0 w-32 h-32 bg-accent/20 rounded-full blur-3xl" />

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Send } from 'lucide-react';
+import logoImage from '@/assets/logo.png';
 
 export function Footer() {
   const ref = useRef(null);
@@ -64,24 +65,43 @@ export function Footer() {
           </motion.a>
         </div>
 
+        {/* Disclaimer */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
+          className="glass rounded-2xl p-6 mb-8 max-w-4xl mx-auto"
+        >
+          <h3 className="font-semibold text-foreground mb-3 text-center">Дисклеймер</h3>
+          <p className="text-sm text-muted-foreground text-center leading-relaxed">
+            Торговля на рынке Форекс сопряжена с высокими рисками и может привести к потере капитала. 
+            Информация, представленная на сайте PROSSFX, носит исключительно информационный характер и не является 
+            инвестиционной рекомендацией. Прошлые результаты не гарантируют будущей доходности. Перед началом торговли 
+            убедитесь, что вы понимаете связанные с этим риски. Принимая решение о торговле, вы действуете на свой страх и риск.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="border-t border-border/50 pt-8"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center font-display font-bold text-primary">
-                P
-              </div>
-              <div>
-                <span className="font-display font-bold text-foreground">PROSSFX</span>
-                <span className="block text-xs text-muted-foreground">Profit Success Forex Trader Community</span>
-              </div>
-            </div>
+            <a 
+              href="https://prossfx.ru/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+            >
+              <img 
+                src={logoImage} 
+                alt="PROSSFX - cообщество прибыльных успешных трейдеров" 
+                className="h-10 w-auto"
+              />
+            </a>
             
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground text-center">
               © 2006-2025 PROSSFX. Все права защищены.
             </p>
           </div>

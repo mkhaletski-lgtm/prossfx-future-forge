@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import logoImage from '@/assets/logo.png';
 
 const navItems = [
   { label: 'О НАС', href: '#about' },
@@ -10,18 +11,6 @@ const navItems = [
   { label: 'СОВЕТНИК PROSSFX', href: '#advisor' },
   { label: 'КОНТАКТЫ', href: '#contacts' },
 ];
-
-function Logo() {
-  return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PROSSFX - cообщество прибыльных успешных трейдеров">
-      <title>PROSSFX - cообщество прибыльных успешных трейдеров</title>
-      <rect width="40" height="40" rx="8" fill="#0a1a1f"/>
-      <text x="6" y="18" fill="#00bfa6" fontFamily="Arial Black" fontSize="10" fontWeight="bold">PROSS</text>
-      <text x="10" y="30" fill="#ef4444" fontFamily="Arial Black" fontSize="12" fontWeight="bold">FX</text>
-      <circle cx="32" cy="12" r="3" fill="#00bfa6"/>
-    </svg>
-  );
-}
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,14 +41,14 @@ export function Header() {
           href="https://prossfx.ru/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3"
+          className="flex items-center"
           whileHover={{ scale: 1.05 }}
         >
-          <Logo />
-          <div className="hidden sm:block">
-            <span className="font-display font-bold text-menu-foreground text-lg">PROSSFX</span>
-            <span className="block text-xs text-menu-foreground/80 font-body">PROFIT SUCCESS FOREX<br/>TRADER COMMUNITY</span>
-          </div>
+          <img 
+            src={logoImage} 
+            alt="PROSSFX - cообщество прибыльных успешных трейдеров" 
+            className="h-10 w-auto"
+          />
         </motion.a>
 
         {/* Desktop Navigation */}

@@ -151,21 +151,20 @@ export function AdvisorSection({ onOpenEmailForm }: AdvisorSectionProps) {
               alt="Результаты торговли советника PROSSFX в 2025 году"
               className="w-full h-auto"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
           </div>
 
           <p className="text-center text-lg text-muted-foreground mb-8">
             Хотите, чтобы ваш капитал работал 24/5, даже пока вы спите? Советник PROSSFX — это ваш личный трейдер, который торгует по проверенной стратегии и приносит прибыль без эмоций и ошибок.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="telegram" size="lg" asChild>
+          <div className="flex flex-col gap-4 justify-center items-center w-full max-w-xl mx-auto px-4">
+            <Button variant="telegram" size="lg" asChild className="w-full text-xs sm:text-sm whitespace-normal h-auto py-3">
               <a href="https://t.me/PROSSFX_EA_bot" target="_blank" rel="noopener noreferrer">
                 ПОЛУЧИТЬ СОВЕТНИКА БЕСПЛАТНО В ТЕЛЕГРАМ
               </a>
             </Button>
-            <Button variant="outline" size="lg" onClick={onOpenEmailForm}>
-              <Mail className="mr-2 icon-glow" />
+            <Button variant="outline" size="lg" onClick={onOpenEmailForm} className="w-full text-xs sm:text-sm whitespace-normal h-auto py-3">
+              <Mail className="mr-2 icon-glow flex-shrink-0" />
               ПОЛУЧИТЬ СОВЕТНИКА БЕСПЛАТНО НА E-MAIL
             </Button>
           </div>

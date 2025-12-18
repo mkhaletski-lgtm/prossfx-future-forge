@@ -8,6 +8,7 @@ import { FAQSection } from '@/components/FAQSection';
 import { AdvisorSection } from '@/components/AdvisorSection';
 import { Footer } from '@/components/Footer';
 import { EmailFormModal } from '@/components/EmailFormModal';
+import { ScrollToTop } from '@/components/ScrollToTop';
 
 const Index = () => {
   const [isEmailFormOpen, setIsEmailFormOpen] = useState(false);
@@ -28,6 +29,7 @@ const Index = () => {
         isOpen={isEmailFormOpen} 
         onClose={() => setIsEmailFormOpen(false)} 
       />
+      <ScrollToTop />
     </div>
   );
 };

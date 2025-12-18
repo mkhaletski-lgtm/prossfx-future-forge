@@ -74,13 +74,13 @@ export function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.6, duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center flex-wrap"
+          className="flex flex-col gap-4 justify-center items-center w-full max-w-xl mx-auto px-4"
         >
           <Button
             variant="telegram"
             size="lg"
             asChild
-            className="w-full sm:w-auto"
+            className="w-full text-xs sm:text-sm whitespace-normal h-auto py-3"
           >
             <a href="https://t.me/PROSSFX_EA_bot" target="_blank" rel="noopener noreferrer">
               ПОЛУЧИТЬ СОВЕТНИКА БЕСПЛАТНО В ТЕЛЕГРАМ
@@ -90,9 +90,9 @@ export function HeroSection({ onOpenEmailForm }: HeroSectionProps) {
             variant="outline"
             size="lg"
             onClick={onOpenEmailForm}
-            className="w-full sm:w-auto"
+            className="w-full text-xs sm:text-sm whitespace-normal h-auto py-3"
           >
-            <Mail className="mr-2 icon-glow" />
+            <Mail className="mr-2 icon-glow flex-shrink-0" />
             ПОЛУЧИТЬ СОВЕТНИКА БЕСПЛАТНО НА E-MAIL
           </Button>
         </motion.div>

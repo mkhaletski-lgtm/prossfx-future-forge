@@ -104,9 +104,9 @@ export function FAQSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center mt-12 px-4"
         >
-          <Button variant="telegram" size="xl" asChild>
+          <Button variant="telegram" size="xl" asChild className="w-full max-w-xl text-xs sm:text-sm whitespace-normal h-auto py-4">
             <a href="https://t.me/PROSSFX" target="_blank" rel="noopener noreferrer">
               ПОДПИСАТЬСЯ НА БЕСПЛАТНЫЕ СИГНАЛЫ В ТЕЛЕГРАМ
             </a>
