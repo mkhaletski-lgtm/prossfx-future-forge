@@ -26,18 +26,16 @@ export function EmailFormModal({ isOpen, onClose }: EmailFormModalProps) {
     setIsLoading(true);
     
     try {
-      const response = await fetch('https://formsubmit.co/ajax/prossfx@prossfx.ru', {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('_subject', 'Запрос на получение советника PROSSFX');
+      formData.append('_template', 'table');
+      formData.append('_captcha', 'false');
+
+      const response = await fetch('https://formsubmit.co/prossfx@gmail.com', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          _subject: 'Запрос на получение советника PROSSFX',
-          _template: 'table'
-        })
+        body: formData
       });
 
       if (response.ok) {

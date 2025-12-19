@@ -77,7 +77,7 @@ export function AdvisorSection({ onOpenEmailForm }: AdvisorSectionProps) {
             >
               <img
                 src={robotImage}
-                alt="Робот-советник для автоматической торговли на Форекс"
+                alt="Советник (Эксперт) PROSSFX"
                 className="max-w-full h-auto max-h-[400px] drop-shadow-2xl"
               />
               <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl -z-10" />
@@ -139,7 +139,7 @@ export function AdvisorSection({ onOpenEmailForm }: AdvisorSectionProps) {
           className="glass rounded-3xl p-8 md:p-12"
         >
           <h3 className="text-xl md:text-2xl font-display font-bold mb-4 text-center uppercase">
-            Результат торговли советника (эксперта) PROSSFX в 2025 году
+            Результат торговли советника (эксперта) <span className="gradient-text">PROSSFX</span> в 2025 году
           </h3>
           <p className="text-lg text-center text-muted-foreground mb-8">
             Совокупная чистая прибыль составила <span className="text-primary font-bold">218.58 USD</span> при начальном депозите 200 USD — это рост капитала более чем на <span className="text-primary font-bold">109%</span> без участия трейдера!
