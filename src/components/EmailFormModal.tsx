@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, User, Send, Loader2 } from 'lucide-react';
+import { X, Mail, User, Send } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { toast } from 'sonner';
 
 interface EmailFormModalProps {
   isOpen: boolean;
@@ -11,47 +9,6 @@ interface EmailFormModalProps {
 }
 
 export function EmailFormModal({ isOpen, onClose }: EmailFormModalProps) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!name || !email) {
-      toast.error('Пожалуйста, заполните все поля');
-      return;
-    }
-
-    setIsLoading(true);
-    
-    try {
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('_subject', 'Запрос на получение советника PROSSFX');
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
-
-      const response = await fetch('https://formsubmit.co/prossfx@gmail.com', {
-        method: 'POST',
-        body: formData
-      });
-
-      if (response.ok) {
-        toast.success('Заявка отправлена! Советник будет отправлен на ваш email.');
-        setName('');
-        setEmail('');
-        onClose();
-      } else {
-        throw new Error('Ошибка отправки');
-      }
-    } catch (error) {
-      toast.error('Произошла ошибка. Попробуйте позже.');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <AnimatePresence>
@@ -100,14 +57,24 @@ export function EmailFormModal({ isOpen, onClose }: EmailFormModalProps) {
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form 
+                  action="https://formsubmit.co/prossfx@gmail.com" 
+                  method="POST"
+                  className="space-y-4"
+                >
+                  {/* FormSubmit.co hidden fields */}
+                  <input type="hidden" name="_subject" value="Запрос на получение советника PROSSFX" />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_next" value={window.location.href} />
+                  
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                     <Input
                       type="text"
+                      name="name"
                       placeholder="Ваше имя"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      required
                       className="pl-12 h-12 bg-secondary/50 border-border/50 focus:border-primary"
                     />
                   </div>
@@ -116,9 +83,9 @@ export function EmailFormModal({ isOpen, onClose }: EmailFormModalProps) {
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                     <Input
                       type="email"
+                      name="email"
                       placeholder="Ваш email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      required
                       className="pl-12 h-12 bg-secondary/50 border-border/50 focus:border-primary"
                     />
                   </div>
@@ -128,19 +95,9 @@ export function EmailFormModal({ isOpen, onClose }: EmailFormModalProps) {
                     variant="hero"
                     size="lg"
                     className="w-full"
-                    disabled={isLoading}
                   >
-                    {isLoading ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                        Отправка...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5 mr-2" />
-                        Получить советника
-                      </>
-                    )}
+                    <Send className="w-5 h-5 mr-2" />
+                    Получить советника
                   </Button>
                 </form>
 
