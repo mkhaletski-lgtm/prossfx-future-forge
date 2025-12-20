@@ -8,6 +8,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import gallery1 from '@/assets/gallery-1.jpg';
+import gallery2 from '@/assets/gallery-2.jpg';
+import gallery3 from '@/assets/gallery-3.jpg';
 
 const faqItems = [
   {
@@ -98,6 +101,30 @@ export function FAQSection() {
               </AccordionItem>
             ))}
           </Accordion>
+        </motion.div>
+
+        {/* Gallery */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto"
+        >
+          <img 
+            src={gallery1} 
+            alt="Пример прибыльного сигнала PROSSFX" 
+            className="w-full h-auto rounded-xl shadow-lg"
+          />
+          <img 
+            src={gallery2} 
+            alt="Пример прибыльного сигнала PROSSFX" 
+            className="w-full h-auto rounded-xl shadow-lg"
+          />
+          <img 
+            src={gallery3} 
+            alt="Пример прибыльного сигнала PROSSFX" 
+            className="w-full h-auto rounded-xl shadow-lg"
+          />
         </motion.div>
 
         <motion.div
