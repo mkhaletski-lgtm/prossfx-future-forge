@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import cashbackBanner from '@/assets/cashback-banner.jpg';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
@@ -23,6 +24,22 @@ const Index = () => {
         <ServicesSection />
         <FAQSection />
         <AdvisorSection onOpenEmailForm={() => setIsEmailFormOpen(true)} />
+        
+        {/* Cashback Banner */}
+        <section className="w-full">
+          <a 
+            href="https://clck.ru/3PZZxD" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <img 
+              src={cashbackBanner} 
+              alt="Кэшбэк на Форекс"
+              className="w-full h-auto"
+            />
+          </a>
+        </section>
       </main>
       <Footer />
       <EmailFormModal 
