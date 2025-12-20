@@ -112,17 +112,17 @@ export function FAQSection() {
         >
           <img 
             src={gallery1} 
-            alt="Пример прибыльного сигнала PROSSFX" 
+            alt="Бесплатные сигналы в телеграм от PROSSFX" 
             className="w-full h-auto rounded-xl shadow-lg"
           />
           <img 
             src={gallery2} 
-            alt="Пример прибыльного сигнала PROSSFX" 
+            alt="Бесплатные сигналы в телеграм от PROSSFX" 
             className="w-full h-auto rounded-xl shadow-lg"
           />
           <img 
             src={gallery3} 
-            alt="Пример прибыльного сигнала PROSSFX" 
+            alt="Бесплатные сигналы в телеграм от PROSSFX" 
             className="w-full h-auto rounded-xl shadow-lg"
           />
         </motion.div>
